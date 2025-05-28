@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOONLIGHT GARDEN - Женский клуб</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #f8d56b;
+            --moonlight: #e6f0ff;
+            --dark: #0a0a1a;
+            --pink: #ff9ec6;
+            --purple: #c792ea;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            background-color: var(--dark);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+        
+        /* Лунный фон */
+        .moonlight-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at center, 
+                        rgba(22,38,82,0.8) 0%, 
+                        rgba(10,10,26,1) 70%);
+            overflow: hidden;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="0.5" fill="white"/><circle cx="50" cy="30" r="0.7" fill="white"/><circle cx="80" cy="20" r="0.3" fill="white"/><circle cx="10" cy="60" r="0.4" fill="white"/><circle cx="40" cy="70" r="0.5" fill="white"/><circle cx="90" cy="80" r="0.6" fill="white"/></svg>');
+            animation: twinkle 5s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .moon {
+            position: absolute;
+            top: 15%;
+            right: 15%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, 
+                        var(--moonlight) 30%, 
+                        transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px var(--moonlight),
+                        0 0 80px rgba(230,240,255,0.3);
+            animation: moon-glow 3s infinite alternate;
+        }
+        
+        @keyframes moon-glow {
+            0% { box-shadow: 0 0 40px var(--moonlight), 0 0 80px rgba(230,240,255,0.3); }
+            100% { box-shadow: 0 0 60px var(--moonlight), 0 0 120px rgba(230,240,255,0.5); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Навигация */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 3px;
+            position: relative;
+            text-decoration: none;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.7;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        /* Герой секция */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .club-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 96px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            color: transparent;
+            background: linear-gradient(45deg, var(--moonlight) 30%, var(--gold) 70%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(230,240,255,0.3);
+            position: relative;
+            animation: title-glow 2s infinite alternate;
+        }
+        
+        @keyframes title-glow {
+            0% { text-shadow: 0 0 20px rgba(230,240,255,0.3); }
+            100% { text-shadow: 0 0 40px rgba(230,240,255,0.6); }
+        }
+        
+        .club-subtitle {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--moonlight);
+        }
+        
+        .club-slogan {
+            font-size: 24px;
+            margin-bottom: 50px;
+            max-width: 700px;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .club-slogan::before,
+        .club-slogan::after {
+            content: '✧';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 20px;
+        }
+        
+        .club-slogan::before {
+            left: -40px;
+        }
+        
+        .club-slogan::after {
+            right: -40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--gold), #ffea9e);
+            color: #000;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 25px rgba(248,213,107,0.4);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(248,213,107,0.6);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Секции */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--gold);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .about-content, .event-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text, .event-text {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .event-highlight {
+            color: var(--pink);
+            font-weight: 600;
+        }
+        
+        .cocktail-container {
+            flex: 1;
+            position: relative;
+            text-align: center;
+        }
+        
+        .cocktail {
+            width: 550px;
+            height: 650px;
+            background: url('smo.png') center/contain no-repeat;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .smoke {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 200px;
+            background: url('flo2.png') center/contain no-repeat;
+            animation: float 4s infinite ease-in-out;
+            opacity: 0.8;
+        }
+        
+        .flowers {
+            position: absolute;
+            width: 250x;
+            height: 250px;
+            background: url('floral.png') center/contain no-repeat;
+            opacity: 0.7;
+            z-index: -1;
+        }
+        
+        .flower-1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-15deg);
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        .flower-2 {
+            bottom: 10%;
+            right: 5%;
+            transform: rotate(25deg);
+            animation: float 5s infinite ease-in-out reverse;
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            margin-top: 30px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+            padding: 12px 30px;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(248, 213, 107, 0.1);
+        }
+        
+        /* Галерея */
+        .gallery-section {
+            padding: 80px 0;
+            background: rgba(10, 10, 26, 0.7);
+            margin: 60px 0;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co/3zQqY1G/floral.png') center/cover;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .gallery-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .gallery-slide {
+            display: none;
+            text-align: center;
+            animation: fade 1s;
+        }
+        
+        @keyframes fade {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
+        
+        .gallery-slide.active {
+            display: block;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-caption {
+            margin-top: 20px;
+            font-size: 20px;
+            color: var(--moonlight);
+        }
+        
+        .gallery-nav {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .gallery-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .gallery-dot.active {
+            background-color: var(--gold);
+            transform: scale(1.3);
+        }
+        
+        .gallery-prev, .gallery-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+        
+        .gallery-prev:hover, .gallery-next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .gallery-prev {
+            left: 20px;
+        }
+        
+        .gallery-next {
+            right: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from {opacity: 0}
+            to {opacity: 1}
+        }
+        
+        .modal-content {
+            background-color: #0a0a1a;
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(248, 213, 107, 0.3);
+        }
+        
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--gold);
+        }
+        
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #1a1a2e;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--gold);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .form-submit:hover {
+            background-color: #ffea9e;
+        }
+        
+        .contacts-section {
+            padding: 80px 0;
+            background: rgba(22, 38, 82, 0.3);
+            border-radius: 15px;
+            margin-top: 60px;
+        }
+        
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-card {
+            background: rgba(10, 10, 26, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(248, 213, 107, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 25px rgba(248, 213, 107, 0.1);
+        }
+        
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 22px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            color: var(--gold);
+            font-size: 20px;
+            min-width: 25px;
+        }
+        
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .club-name {
+                font-size: 72px;
+            }
+            
+            .club-subtitle {
+                font-size: 24px;
+            }
+            
+            .club-slogan {
+                font-size: 20px;
+            }
+            
+            .moon {
+                width: 100px;
+                height: 100px;
+                top: 10%;
+                right: 10%;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .club-name {
+                font-size: 48px;
+                letter-spacing: 3px;
+            }
+            
+            .club-subtitle {
+                font-size: 20px;
+            }
+            
+            .club-slogan {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+            
+            .club-slogan::before,
+            .club-slogan::after {
+                display: none;
+            }
+            
+            .btn {
+                padding: 15px 35px;
+                font-size: 16px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .about-content, .event-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .cocktail {
+                width: 200px;
+                height: 280px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+            
+            .gallery-img {
+                max-height: 300px;
+            }
+            
+            .gallery-prev, .gallery-next {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .club-name {
+                font-size: 36px;
+            }
+            
+            .club-subtitle {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .contact-card {
+                padding: 20px;
+            }
+        }
+        .petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: falling linear infinite;
+            filter: drop-shadow(0 0 2px rgba(248, 213, 107, 0.5));
+        }
+
+        /* 3 разных типа листьев */
+        .petal.type1 {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20"><path d="M10 2Q13 5 10 8Q7 5 10 2" fill="rgba(248,213,107,0.8)"/></svg>');
+            width: 12px;
+            height: 12px;
+        }
+
+        .petal.type2 {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20"><path d="M10 2Q12 6 8 8Q6 4 10 2" fill="rgba(248,213,107,0.7)"/></svg>');
+            width: 10px;
+            height: 10px;
+        }
+
+        .petal.type3 {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20"><path d="M10 2Q14 5 10 9Q6 5 10 2" fill="rgba(248,213,107,0.6)"/></svg>');
+            width: 8px;
+            height: 8px;
+        }
+
+        @keyframes falling {
+            0% {
+                transform: translate(calc(var(--random-x) * 100vw), -10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: var(--opacity);
+            }
+            90% {
+                opacity: var(--opacity);
+            }
+            100% {
+                transform: translate(calc(var(--random-x) * 100vw + var(--random-drift) * 10vw), 110vh) rotate(calc(var(--rotation) * 1turn));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Лунный фон -->
+    <div class="moonlight-bg">
+        <div class="stars"></div>
+        <div class="moon"></div>
+    </div>
+     <div class="petals-container" id="petalsContainer"></div>
+    <div class="container">
+        <!-- Шапка -->
+        <header>
+            <a href="#" class="logo">MOONLIGHT</a>
+            <nav class="nav-menu">
+                <a href="#about">О КЛУБЕ</a>
+                <a href="#events">МЕРОПРИЯТИЯ</a>
+                <a href="#gallery">ГАЛЕРЕЯ</a>
+                <a href="#contacts">КОНТАКТЫ</a>
+            </nav>
+        </header>
+        
+        <!-- Герой секция -->
+        <section class="hero">
+            <h1 class="club-name">MOONLIGHT GARDEN</h1>
+            <h2 class="club-subtitle">ЖЕНСКИЙ КЛУБ</h2>
+            <p class="club-slogan">МЕСТО, ГДЕ НОЧЬ РАСКРЫВАЕТ СВОЮ МАГИЮ</p>
+            <button class="btn open-modal-btn">ЗАБРОНИРОВАТЬ СТОЛИК</button>
+        </section>
+        
+        <!-- Секция "О нас" -->
+        <section id="about" class="section">
+            <div class="flowers flower-1"></div>
+            <div class="flowers flower-2"></div>
+            
+            <h2 class="section-title">О НАС</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>MOONLIGHT GARDEN — это не просто клуб, а настоящий женский оазис, где каждая гостья становится частью волшебной лунной сказки.</p>
+                    
+                    <p>Наш сад, украшенный живыми цветами и хрустальными люстрами, создаёт атмосферу таинственности и роскоши. Здесь вы найдёте уютные беседки, утопающие в плетистых розах, и зеркальные водоёмы, отражающие звёздное небо.</p>
+                    
+                    <p>Каждый вечер наши флористы создают свежие цветочные композиции, а парфюмеры наполняют воздух тонкими ароматами ночных цветов. Особое внимание мы уделяем деталям — от хрустальных бокалов до меню, выполненного в виде старинного свитка.</p>
+                    
+                    <button class="btn btn-secondary open-modal-btn">ЗАБРОНИРОВАТЬ СТОЛИК</button>
+                </div>
+                <div class="cocktail-container">
+                    <div class="flower-1"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Секция "Лунный ритуал" -->
+        <section id="events" class="section" style="background: rgba(10,10,26,0.7);">
+            <h2 class="section-title">ЛУННЫЙ РИТУАЛ</h2>
+            <div class="event-content">
+                <div class="cocktail-container">
+                    <div class="cocktail"></div>
+                </div>
+                <div class="event-text">
+                    <p>Изюминка MOONLIGHT GARDEN – <span class="event-highlight">«Лунный ритуал»</span> ✧☽</p>
+                    
+                    <p>Каждую полночь в клубе проходит волшебное шоу: под таинственные мелодии в зале мягко гаснет свет, и над танцполом «восходит» огромная светящаяся луна. В этот момент бармены готовят <span class="event-highlight">фирменный коктейль «Luna Mist»</span> с дымящимся эффектом, который подают только избранным гостьям.</p>
+                    
+                    <p>А ещё – в «лунном саду» спрятаны <span class="event-highlight">золотые билеты</span>, дающие право на VIP-обслуживание, персональный стол или даже свидание с загадочным незнакомцем...</p>
+                    
+                    <p>Хотите узнать, что скрывает ночь? <span class="event-highlight">Ждём вас в MOONLIGHT GARDEN!</span></p>
+                    
+                    <button class="btn open-modal-btn">ЗАБРОНИРОВАТЬ УЧАСТИЕ</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Галерея -->
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title">ИНТЕРЬЕРЫ</h2>
+            <div class="gallery-container">
+                <div class="gallery-slide active">
+                    <img src="fu.jpg" alt="Интерьер клуба" class="gallery-img">
+                    <p class="gallery-caption">Главный зал с танцполом под светящейся луной</p>
+                </div>
+                <div class="gallery-slide">
+                    <img src="did.jpg" alt="Лунный сад" class="gallery-img">
+                    <p class="gallery-caption">Наш лучший диджей</p>
+                </div>
+                <div class="gallery-slide">
+                    <img src="vip.jpg" alt="VIP зона" class="gallery-img">
+                    <p class="gallery-caption">VIP зона для особых гостей</p>
+                </div>
+                <div class="gallery-slide">
+                    <img src="vod.jpg" alt="Барная стойка" class="gallery-img">
+                    <p class="gallery-caption">Барная стойка с фирменными коктейлями</p>
+                </div>
+                <div class="gallery-slide">
+                    <img src="coc.jpg" alt="коктейли" class="gallery-img">
+                </div>
+                
+                <button class="gallery-prev">❮</button>
+                <button class="gallery-next">❯</button>
+            </div>
+            
+            <div class="gallery-nav">
+                <span class="gallery-dot active"></span>
+                <span class="gallery-dot"></span>
+                <span class="gallery-dot"></span>
+                <span class="gallery-dot"></span>
+                <span class="gallery-dot"></span>
+            </div>
+        </section>
+        
+        <!-- Контакты -->
+        <section id="contacts" class="contacts-section">
+            <h2 class="section-title">КОНТАКТЫ</h2>
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <h3 class="contact-title">Связь с нами</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <a href="tel:+79771234567" class="contact-link">+7 (977) 123-45-67</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <a href="tel:+74957654321" class="contact-link">+7 (495) 765-43-21</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <a href="mailto:moonlightgarden@support.ru" class="contact-link">moonlight@support.ru</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <a href="https://t.me/moonlight_garden" target="_blank" class="contact-link">@moonlight_garden</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h3 class="contact-title">Режим работы</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">⏳</span>
+                            <span>Пн-Чт: 20:00 - 04:00</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✨</span>
+                            <span>Пт-Сб: 20:00 - 06:00</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <a href="tel:+79779876543" class="contact-link">+7 (977) 987-65-43</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h3 class="contact-title">Навигация</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">🌙</span>
+                            <a href="#about" class="contact-link">О клубе</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🍸</span>
+                            <a href="#events" class="contact-link">Мероприятия</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📷</span>
+                            <a href="#gallery" class="contact-link">Галерея</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">☎️</span>
+                            <a href="#contacts" class="contact-link">Контакты</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Модальное окно бронирования -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="modal-title">ЗАБРОНИРОВАТЬ СТОЛИК</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Дата посещения</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Количество гостей</label>
+                    <select id="guests" required>
+                        <option value="1">1 человек</option>
+                        <option value="2">2 человека</option>
+                        <option value="3-4">3-4 человека</option>
+                        <option value="5+">5+ человек</option>
+                        <option value="vip">VIP-стол</option>
+                    </select>
+                </div>
+                <button type="submit" class="form-submit">ПОДТВЕРДИТЬ БРОНЬ</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Галерея
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.gallery-slide');
+        const dots = document.querySelectorAll('.gallery-dot');
+        
+        function showSlide(n) {
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(slideIndex += 1);
+        }
+        
+        function prevSlide() {
+            showSlide(slideIndex -= 1);
+        }
+        
+        document.querySelector('.gallery-next').addEventListener('click', nextSlide);
+        document.querySelector('.gallery-prev').addEventListener('click', prevSlide);
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(slideIndex = index);
+            });
+        });
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        const galleryContainer = document.querySelector('.gallery-container');
+        galleryContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        galleryContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        const modal = document.getElementById('bookingModal');
+        const openModalBtns = document.querySelectorAll('.open-modal-btn');
+        const closeBtn = document.querySelector('.close');
+        
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за бронирование! Мы свяжемся с вами в ближайшее время.');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            this.reset();
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const moon = document.querySelector('.moon');
+            const scrollValue = window.scrollY;
+            moon.style.transform = `translateY(${scrollValue * 0.3}px)`;
+        });
+        function createPetals() {
+            const container = document.getElementById('petalsContainer');
+            const petalCount = 50; 
+            container.innerHTML = '';
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                const petalType = Math.floor(Math.random() * 3) + 1;
+                petal.classList.add('petal', `type${petalType}`);
+                const startX = Math.random();
+                const drift = Math.random() * 0.4 - 0.2; 
+                const rotation = Math.random() * 3; 
+                const duration = Math.random() * 15 + 15; 
+                const delay = Math.random() * 15; 
+                const opacity = Math.random() * 0.5 + 0.3; 
+                
+                petal.style.setProperty('--random-x', startX);
+                petal.style.setProperty('--random-drift', drift);
+                petal.style.setProperty('--rotation', rotation);
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
+                petal.style.setProperty('--opacity', opacity);
+                
+                container.appendChild(petal);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            createPetals();
+            setInterval(createPetals, 30000);
+        });
+    </script>
+</body>
+</html>
