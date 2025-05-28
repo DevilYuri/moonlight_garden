@@ -25,11 +25,10 @@
             color: white;
             overflow-x: hidden;
             background-color: var(--dark);
-            line-height: 1.7;
+            line-height: 1.8;
             font-size: 18px;
         }
         
-        /* Лунный фон */
         .moonlight-bg {
             position: fixed;
             top: 0;
@@ -86,7 +85,6 @@
             z-index: 1;
         }
         
-        /* Навигация */
         header {
             display: flex;
             justify-content: space-between;
@@ -151,7 +149,16 @@
             width: 100%;
         }
         
-        /* Герой секция */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 100;
+        }
+    
         .hero {
             min-height: 100vh;
             display: flex;
@@ -165,9 +172,9 @@
         
         .club-name {
             font-family: 'Playfair Display', serif;
-            font-size: 96px;
+            font-size: clamp(36px, 10vw, 96px);
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             letter-spacing: 5px;
             color: transparent;
             background: linear-gradient(45deg, var(--moonlight) 30%, var(--gold) 70%);
@@ -184,17 +191,17 @@
         }
         
         .club-subtitle {
-            font-size: 28px;
+            font-size: clamp(20px, 5vw, 28px);
             margin-bottom: 15px;
             color: var(--moonlight);
         }
         
         .club-slogan {
-            font-size: 24px;
+            font-size: clamp(16px, 4vw, 24px);
             margin-bottom: 50px;
             max-width: 700px;
-            line-height: 1.6;
             position: relative;
+            padding: 0 20px;
         }
         
         .club-slogan::before,
@@ -208,22 +215,22 @@
         }
         
         .club-slogan::before {
-            left: -40px;
+            left: -10px;
         }
         
         .club-slogan::after {
-            right: -40px;
+            right: -10px;
         }
         
         .btn {
             display: inline-block;
             background: linear-gradient(45deg, var(--gold), #ffea9e);
             color: #000;
-            padding: 18px 45px;
+            padding: 15px 40px;
             text-decoration: none;
             font-weight: 600;
             border-radius: 50px;
-            font-size: 18px;
+            font-size: clamp(16px, 3vw, 18px);
             letter-spacing: 1px;
             transition: all 0.3s;
             box-shadow: 0 5px 25px rgba(248,213,107,0.4);
@@ -231,6 +238,7 @@
             overflow: hidden;
             border: none;
             cursor: pointer;
+            min-width: 200px;
         }
         
         .btn::before {
@@ -253,7 +261,6 @@
             left: 100%;
         }
         
-        /* Секции */
         .section {
             padding: 80px 0;
             position: relative;
@@ -261,7 +268,7 @@
         
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
+            font-size: clamp(32px, 6vw, 42px);
             text-align: center;
             margin-bottom: 60px;
             color: var(--gold);
@@ -281,56 +288,96 @@
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
         
-        .about-content, .event-content {
-            max-width: 1100px;
+        .about-content {
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
             gap: 50px;
+            padding: 0 20px;
         }
         
-        .about-text, .event-text {
+        .about-text {
             flex: 1;
             font-size: 18px;
             line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .about-image {
+            flex: 1;
+            max-width: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover {
+            transform: translateY(-5px);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .event-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 0 20px;
+        }
+        
+        .event-text {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            hyphens: auto;
         }
         
         .event-highlight {
             color: var(--pink);
             font-weight: 600;
+            display: inline;
         }
         
         .cocktail-container {
             flex: 1;
+            max-width: 500px;
             position: relative;
             text-align: center;
         }
         
         .cocktail {
-            width: 550px;
-            height: 650px;
+            width: 100%;
+            max-width: 450px;
+            height: 550px;
             background: url('smo.png') center/contain no-repeat;
             margin: 0 auto;
             position: relative;
         }
         
-        .smoke {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 200px;
-            background: url('flo2.png') center/contain no-repeat;
-            animation: float 4s infinite ease-in-out;
-            opacity: 0.8;
-        }
         
         .flowers {
             position: absolute;
-            width: 250x;
-            height: 250px;
-            background: url('floral.png') center/contain no-repeat;
+            width: 350px;
+            height: 350px;
+            background: url('flow1.png') center/contain no-repeat;
             opacity: 0.7;
             z-index: -1;
         }
@@ -356,13 +403,13 @@
             color: var(--gold);
             background: transparent;
             padding: 12px 30px;
+            min-width: auto;
         }
         
         .btn-secondary:hover {
             background: rgba(248, 213, 107, 0.1);
         }
         
-        /* Галерея */
         .gallery-section {
             padding: 80px 0;
             background: rgba(10, 10, 26, 0.7);
@@ -467,7 +514,7 @@
         .gallery-next {
             right: 20px;
         }
-
+        
         .modal {
             display: none;
             position: fixed;
@@ -640,116 +687,6 @@
             text-decoration: underline;
         }
         
-        /* Адаптивность */
-        @media (max-width: 992px) {
-            .club-name {
-                font-size: 72px;
-            }
-            
-            .club-subtitle {
-                font-size: 24px;
-            }
-            
-            .club-slogan {
-                font-size: 20px;
-            }
-            
-            .moon {
-                width: 100px;
-                height: 100px;
-                top: 10%;
-                right: 10%;
-            }
-            
-            .section-title {
-                font-size: 36px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px 0;
-            }
-            
-            .nav-menu {
-                gap: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .club-name {
-                font-size: 48px;
-                letter-spacing: 3px;
-            }
-            
-            .club-subtitle {
-                font-size: 20px;
-            }
-            
-            .club-slogan {
-                font-size: 18px;
-                padding: 0 20px;
-            }
-            
-            .club-slogan::before,
-            .club-slogan::after {
-                display: none;
-            }
-            
-            .btn {
-                padding: 15px 35px;
-                font-size: 16px;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .about-content, .event-content {
-                flex-direction: column;
-                gap: 30px;
-            }
-            
-            .cocktail {
-                width: 200px;
-                height: 280px;
-            }
-            
-            .section-title {
-                font-size: 32px;
-                margin-bottom: 40px;
-            }
-            
-            .gallery-img {
-                max-height: 300px;
-            }
-            
-            .gallery-prev, .gallery-next {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .club-name {
-                font-size: 36px;
-            }
-            
-            .club-subtitle {
-                font-size: 18px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-            
-            .contact-card {
-                padding: 20px;
-            }
-        }
         .petals-container {
             position: fixed;
             top: 0;
@@ -770,7 +707,6 @@
             filter: drop-shadow(0 0 2px rgba(248, 213, 107, 0.5));
         }
 
-        /* 3 разных типа листьев */
         .petal.type1 {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20"><path d="M10 2Q13 5 10 8Q7 5 10 2" fill="rgba(248,213,107,0.8)"/></svg>');
             width: 12px;
@@ -805,10 +741,109 @@
                 opacity: 0;
             }
         }
+
+        @media (max-width: 992px) {
+            .about-content, .event-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .about-image, .cocktail-container {
+                max-width: 100%;
+            }
+            
+            .about-text, .event-text {
+                text-align: left;
+            }
+            
+            .club-slogan::before,
+            .club-slogan::after {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(10, 10, 26, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                transition: right 0.3s ease;
+                padding: 20px;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .gallery-img {
+                max-height: 50vh;
+            }
+            
+            .gallery-prev, .gallery-next {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 40px;
+            }
+            
+            .cocktail {
+                max-width: 200px;
+                height: 280px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 20% auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .club-name {
+                font-size: clamp(28px, 10vw, 36px);
+            }
+            
+            .contact-card {
+                padding: 20px;
+            }
+            
+            .btn {
+                min-width: 160px;
+                padding: 12px 25px;
+            }
+        }
+
+        button, a {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+        
     </style>
 </head>
 <body>
-    <!-- Лунный фон -->
     <div class="moonlight-bg">
         <div class="stars"></div>
         <div class="moon"></div>
@@ -818,6 +853,7 @@
         <!-- Шапка -->
         <header>
             <a href="#" class="logo">MOONLIGHT</a>
+            <button class="menu-toggle">☰</button>
             <nav class="nav-menu">
                 <a href="#about">О КЛУБЕ</a>
                 <a href="#events">МЕРОПРИЯТИЯ</a>
@@ -826,7 +862,6 @@
             </nav>
         </header>
         
-        <!-- Герой секция -->
         <section class="hero">
             <h1 class="club-name">MOONLIGHT GARDEN</h1>
             <h2 class="club-subtitle">ЖЕНСКИЙ КЛУБ</h2>
@@ -834,7 +869,6 @@
             <button class="btn open-modal-btn">ЗАБРОНИРОВАТЬ СТОЛИК</button>
         </section>
         
-        <!-- Секция "О нас" -->
         <section id="about" class="section">
             <div class="flowers flower-1"></div>
             <div class="flowers flower-2"></div>
@@ -850,14 +884,13 @@
                     
                     <button class="btn btn-secondary open-modal-btn">ЗАБРОНИРОВАТЬ СТОЛИК</button>
                 </div>
-                <div class="cocktail-container">
-                    <div class="flower-1"></div>
+                <div class="about-image">
+                    <img src="dan.gif" alt="gifka">
                 </div>
             </div>
         </section>
         
-        <!-- Секция "Лунный ритуал" -->
-        <section id="events" class="section" style="background: rgba(10,10,26,0.7);">
+         <section id="events" class="section" style="background: rgba(10,10,26,0.7);">
             <h2 class="section-title">ЛУННЫЙ РИТУАЛ</h2>
             <div class="event-content">
                 <div class="cocktail-container">
@@ -877,7 +910,6 @@
             </div>
         </section>
         
-        <!-- Галерея -->
         <section id="gallery" class="gallery-section">
             <h2 class="section-title">ИНТЕРЬЕРЫ</h2>
             <div class="gallery-container">
@@ -913,8 +945,7 @@
                 <span class="gallery-dot"></span>
             </div>
         </section>
-        
-        <!-- Контакты -->
+
         <section id="contacts" class="contacts-section">
             <h2 class="section-title">КОНТАКТЫ</h2>
             <div class="contacts-grid">
@@ -983,7 +1014,6 @@
         </section>
     </div>
     
-    <!-- Модальное окно бронирования -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -1017,7 +1047,6 @@
     </div>
     
     <script>
-        // Галерея
         let slideIndex = 0;
         const slides = document.querySelectorAll('.gallery-slide');
         const dots = document.querySelectorAll('.gallery-dot');
@@ -1137,6 +1166,16 @@
         window.addEventListener('load', () => {
             createPetals();
             setInterval(createPetals, 30000);
+        });
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
         });
     </script>
 </body>
